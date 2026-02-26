@@ -30,17 +30,18 @@ jobs:
 
       - name: Add CNAME file
         run: |
+          # Find the dist folder and put CNAME in its root and sub-browser if it exists
           if [ -d "dist/skypizza-app/browser" ]; then
             echo "skypizza.itkamianets.com" > dist/skypizza-app/browser/CNAME
-          else
+          fi
+          if [ -d "dist/skypizza-app" ]; then
             echo "skypizza.itkamianets.com" > dist/skypizza-app/CNAME
           fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/skypizza-app/browser
-          # Якщо папка /browser не знайдена, використовуємо корінь dist/skypizza-app
-          # Ця екшн автоматично перевірить наявність папки
+          folder: dist/skypizza-app
+          # Ми деплоїмо весь вміст dist/skypizza-app, щоб GitHub сам знайшов index.html
           branch: gh-pages
           clean: true
