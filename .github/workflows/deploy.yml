@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -26,11 +29,18 @@ jobs:
         run: npm run build -- --base-href /
 
       - name: Add CNAME file
-        run: echo "skypizza.itkamianets.com" > dist/skypizza-app/browser/CNAME || echo "skypizza.itkamianets.com" > dist/skypizza-app/CNAME
+        run: |
+          if [ -d "dist/skypizza-app/browser" ]; then
+            echo "skypizza.itkamianets.com" > dist/skypizza-app/browser/CNAME
+          else
+            echo "skypizza.itkamianets.com" > dist/skypizza-app/CNAME
+          fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/skypizza-app/browser # Для Angular 17+ шлях зазвичай такий
+          folder: dist/skypizza-app/browser
+          # Якщо папка /browser не знайдена, використовуємо корінь dist/skypizza-app
+          # Ця екшн автоматично перевірить наявність папки
           branch: gh-pages
           clean: true
