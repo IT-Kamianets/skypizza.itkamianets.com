@@ -1,0 +1,239 @@
+<!-- Navbar -->
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="image/logo.jpg" alt="SkyPizza Logo" class="navbar-logo mr-2">
+        <h1 class="title is-4 neon-text" style="font-size: 1.8rem;">Sky<span [style.color]="isDarkMode ? '#f1f5f9' : '#334155'">Pizza</span></h1>
+      </a>
+      
+      <div class="is-hidden-desktop is-flex is-align-items-center pr-4">
+        <div class="theme-toggle mr-4" (click)="toggleTheme()" [class.dark-theme-active]="isDarkMode" [class.light-theme-active]="!isDarkMode">
+          <i class="fas" [class.fa-moon]="!isDarkMode" [class.fa-sun]="isDarkMode" [style.color]="isDarkMode ? '#7dd3fc' : '#38bdf8'"></i>
+        </div>
+        <a role="button" class="navbar-burger" [class.is-active]="isMenuOpen" (click)="toggleMenu()" aria-label="menu" aria-expanded="false" [style.color]="isDarkMode ? '#f1f5f9' : '#334155'">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu" [class.is-active]="isMenuOpen" [style.background]="isMenuOpen ? 'var(--nav-bg)' : 'transparent'">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#menu">Меню</a>
+        <a class="navbar-item" href="#about">Про нас</a>
+        <a class="navbar-item" href="#contact">Локація</a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item is-hidden-touch">
+          <div class="theme-toggle" (click)="toggleTheme()" title="Перемкнути тему">
+            <i class="fas" [class.fa-moon]="!isDarkMode" [class.fa-sun]="isDarkMode" [style.color]="isDarkMode ? '#7dd3fc' : '#38bdf8'"></i>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-neon is-rounded" href="tel:+380968897354" style="padding: 1.5rem 2rem;">
+              <strong>📞 Замовити</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero is-fullheight sky-hero">
+  <div class="hero-body" style="position: relative; z-index: 1;">
+    <div class="container has-text-centered">
+      <p class="subtitle is-5 animate__animated animate__fadeIn" [style.color]="isDarkMode ? '#7dd3fc' : '#38bdf8'" style="letter-spacing: 3px; font-weight: 700;">PREMIUM QUALITY</p>
+      <h1 class="title is-1 gradient-text animate__animated animate__zoomIn" style="font-size: 6rem; font-weight: 900; letter-spacing: -3px; line-height: 1;">
+        SkyPizza
+      </h1>
+      <h2 class="subtitle is-3 animate__animated animate__fadeInUp animate__delay-1s mt-4" style="color: var(--text-muted); font-weight: 500;">
+        Мистецтво смаку, що літає. Відкрий своє небо.
+      </h2>
+      <div class="buttons is-centered animate__animated animate__fadeInUp animate__delay-2s mt-6">
+        <a href="#menu" class="button is-neon is-large is-rounded">
+          Дослідити меню
+        </a>
+        <a href="#about" class="button is-large is-rounded" [class.is-dark]="isDarkMode" [class.is-info]="!isDarkMode" [class.is-outlined]="true">
+          Наша історія
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section" style="margin-top: -100px; position: relative; z-index: 10;">
+  <div class="container">
+    <div class="columns is-multiline has-text-centered">
+      <div class="column is-4 animate__animated animate__fadeInLeft">
+        <div class="stat-box">
+          <p class="title is-1 stat-title">15+</p>
+          <p class="subtitle is-6 mt-2" style="color: var(--text-muted); font-weight: 600;">Авторських рецептів</p>
+        </div>
+      </div>
+      <div class="column is-4 animate__animated animate__fadeInUp">
+        <div class="stat-box">
+          <p class="title is-1 stat-title">30 хв</p>
+          <p class="subtitle is-6 mt-2" style="color: var(--text-muted); font-weight: 600;">Середня доставка</p>
+        </div>
+      </div>
+      <div class="column is-4 animate__animated animate__fadeInRight">
+        <div class="stat-box">
+          <p class="title is-1 stat-title">100%</p>
+          <p class="subtitle is-6 mt-2" style="color: var(--text-muted); font-weight: 600;">Натуральність</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="section mt-6">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <h2 class="title is-2">Наше Меню</h2>
+      <p class="subtitle is-5" style="color: var(--text-muted);">Від класики до небесних експериментів</p>
+    </div>
+    
+    <div class="tabs is-centered is-toggle is-rounded mt-6">
+      <ul style="border: none;">
+        <li [class.is-active]="selectedCategory === 'all'"><a (click)="setCategory('all')">Всі</a></li>
+        <li [class.is-active]="selectedCategory === 'gourmet'"><a (click)="setCategory('gourmet')">Гурме</a></li>
+        <li [class.is-active]="selectedCategory === 'spicy'"><a (click)="setCategory('spicy')">Гострі</a></li>
+        <li [class.is-active]="selectedCategory === 'classic'"><a (click)="setCategory('classic')">Класика</a></li>
+      </ul>
+    </div>
+
+    <div class="columns is-multiline mt-6">
+      <div class="column is-4-desktop is-6-tablet" *ngFor="let item of filteredMenu; let i = index">
+        <div class="card pizza-card h-100 animate__animated animate__fadeInUp" [style.animation-delay]="i * 0.1 + 's'">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img [src]="item.image" [alt]="item.name" style="object-fit: cover; border-radius: 30px 30px 0 0;">
+            </figure>
+          </div>
+          <div class="card-content" style="padding: 2rem;">
+            <div>
+              <p class="title is-4 mb-2" style="font-weight: 700;">{{item.name}}</p>
+              <p class="subtitle is-5" style="color: var(--neon-cyan); font-weight: 800;">{{item.price}} грн</p>
+            </div>
+            <div class="content mt-3" style="color: var(--text-muted); font-size: 0.95rem;">
+              {{item.desc}}
+            </div>
+            <button class="button is-neon is-fullwidth is-rounded mt-5" style="padding: 1.5rem;">В кошик</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section py-6" style="background: var(--accent-pastel); border-radius: 100px 100px 0 0; margin-top: 100px;">
+  <div class="container py-6">
+    <div class="columns is-vcentered">
+      <div class="column is-6">
+        <div class="floating">
+          <figure class="image is-square">
+            <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&q=80&w=800" 
+                 style="border-radius: 50px; border: 8px solid white; box-shadow: var(--shadow);" 
+                 alt="Pizza Art">
+          </figure>
+        </div>
+      </div>
+      <div class="column is-5 is-offset-1">
+        <h2 class="title is-2 mb-6" style="font-size: 3rem; line-height: 1.1;">Мистецтво вогню та тіста</h2>
+        <div class="content is-medium" style="color: var(--text-muted);">
+            <p>У <strong class="has-text-info">SkyPizza</strong> ми перетворили приготування їжі на цифрове мистецтво смаку. Кожна піца — це баланс між традиціями та сучасними фуд-технологіями.</p>
+            <p>Наші кухарі використовують ферментоване тісто, що дозріває 48 годин, аби ви відчули ту саму легкість "небесної" піци.</p>
+            <a href="#menu" class="button is-neon is-rounded mt-5">Спробувати зараз</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section py-6">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-5">
+        <div class="card pizza-card p-6" style="border-radius: 40px;">
+          <h3 class="title is-3 mb-6" style="font-weight: 800;">Зв'язок</h3>
+          <div class="mt-6">
+            <div class="mb-5 is-flex is-align-items-center">
+                <span class="icon is-large has-text-info mr-3"><i class="fas fa-2x fa-map-marker-alt"></i></span>
+                <div>
+                    <p class="is-size-7 has-text-grey">ЛОКАЦІЯ</p>
+                    <p class="is-size-5 font-weight-bold" style="color: var(--text-main);">м. Кам'янець-Подільський</p>
+                </div>
+            </div>
+            <div class="mb-5 is-flex is-align-items-center">
+                <span class="icon is-large has-text-info mr-3"><i class="fas fa-2x fa-phone-alt"></i></span>
+                <div>
+                    <p class="is-size-7 has-text-grey">ТЕЛЕФОН</p>
+                    <p class="is-size-5 font-weight-bold"><a href="tel:+380968897354" style="color: var(--text-main);">+380 96 889 7354</a></p>
+                </div>
+            </div>
+            <div class="mb-5 is-flex is-align-items-center">
+                <span class="icon is-large has-text-info mr-3"><i class="fas fa-2x fa-clock"></i></span>
+                <div>
+                    <p class="is-size-7 has-text-grey">ГРАФІК</p>
+                    <p class="is-size-5 font-weight-bold" style="color: var(--text-main);">10:00 – 22:00 (щодня)</p>
+                </div>
+            </div>
+          </div>
+          <div class="buttons mt-6">
+            <a href="https://www.instagram.com/skypizza_/" class="button is-neon is-outlined is-fullwidth is-rounded" style="border: 2px solid var(--neon-cyan); height: 3.5rem;">
+                <span class="icon"><i class="fab fa-instagram"></i></span>
+                <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-7">
+        <div style="border-radius: 40px; overflow: hidden; border: 1px solid var(--glass-border); height: 100%; box-shadow: var(--shadow);">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2613.6234053648937!2d26.57861!3d48.67833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4733b708d3f1013d%3A0x6b87d26456f9660c!2sSky%20Pizza!5e0!3m2!1suk!2sua!4v1700000000000" 
+            width="100%" height="100%" style="border:0; min-height: 500px;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-multiline is-vcentered">
+      <div class="column is-4 has-text-left-desktop has-text-centered-touch">
+        <p class="gradient-text is-size-3 mb-2" style="font-weight: 900; letter-spacing: -1px;">SkyPizza</p>
+        <p style="color: var(--text-muted); font-weight: 500;">
+          Найкраща авторська піца в місті. Спробуйте наші унікальні поєднання інгредієнтів.
+        </p>
+      </div>
+      <div class="column is-4 has-text-centered">
+        <h4 class="title is-4 mb-4">Контакти</h4>
+        <p class="mb-2">📞 <a href="tel:+380968897354" style="color: var(--text-main);">+380 96 889 7354</a></p>
+        <p class="mb-2">📍 м. Кам'янець-Подільський</p>
+        <p class="mb-2">⏰ 10:00 – 22:00 (щодня)</p>
+      </div>
+      <div class="column is-4 has-text-right-desktop has-text-centered-touch">
+        <div class="valery-badge">
+            <a href="https://github.com" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <span>designed by Valery</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem;" class="mt-2">&copy; 2026 Crafted for SkyPizza.</p>
+      </div>
+    </div>
+  </div>
+</footer>

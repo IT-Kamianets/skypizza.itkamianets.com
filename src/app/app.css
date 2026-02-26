@@ -1,0 +1,270 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Updated Styles using Global Variables */
+.navbar {
+  background: var(--nav-bg) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.sky-hero {
+  background: var(--hero-gradient) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0;
+}
+
+.sky-hero::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: #e0f2fe;
+  filter: blur(120px);
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.neon-text {
+  color: var(--neon-cyan) !important;
+  font-weight: 800;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.pizza-card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 35px;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: var(--shadow) !important;
+}
+
+.pizza-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 40px 80px rgba(56, 189, 248, 0.12) !important;
+}
+
+/* Convex Button Style */
+.button.is-neon {
+  background: var(--accent-pastel) !important;
+  border: none !important;
+  color: var(--neon-cyan) !important;
+  font-weight: 800 !important;
+  border-radius: 20px !important;
+  box-shadow: 
+    6px 6px 12px rgba(56, 189, 248, 0.15),
+    -6px -6px 12px rgba(255, 255, 255, 0.8),
+    inset 0px 0px 0px rgba(0,0,0,0) !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid rgba(56, 189, 248, 0.1) !important;
+}
+
+.button.is-neon:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    8px 8px 16px rgba(56, 189, 248, 0.2),
+    -8px -8px 16px rgba(255, 255, 255, 1) !important;
+  background: var(--neon-cyan) !important;
+  color: white !important;
+}
+
+.button.is-neon:active {
+  transform: translateY(1px) !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Dark Theme Convex Buttons */
+.dark-theme .button.is-neon {
+  background: #1e293b !important;
+  box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.3),
+    -2px -2px 5px rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-theme .button.is-neon:hover {
+  background: var(--neon-cyan) !important;
+  box-shadow: 0 0 20px rgba(125, 211, 252, 0.4) !important;
+}
+
+.navbar-logo {
+  height: 80px; /* Increased size */
+  max-height: 80px;
+  width: auto;
+  margin-right: 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.button.is-large.is-rounded {
+  border-radius: 50px !important; /* Forces circular shape for large buttons */
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+/* Mobile-first bottom navbar */
+@media screen and (max-width: 1023px) {
+  .navbar.is-fixed-top {
+    top: auto !important;
+    bottom: 0 !important;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: none;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .navbar-menu.is-active {
+    position: fixed;
+    bottom: 80px; /* Shift menu above bottom navbar */
+    left: 10px;
+    right: 10px;
+    border-radius: 20px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.15);
+    background: var(--nav-bg) !important;
+  }
+  
+  body {
+    padding-bottom: 90px;
+    padding-top: 0 !important;
+  }
+}
+
+.valery-badge {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.valery-badge a {
+  color: var(--text-main);
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.valery-badge a:hover {
+  transform: scale(1.2);
+  color: var(--neon-cyan);
+}
+
+.button.is-outlined.is-dark {
+  border-color: #f1f5f9 !important;
+  color: #f1f5f9 !important;
+}
+
+.button.is-outlined.is-info {
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+.dark-theme .font-weight-bold,
+.dark-theme .is-size-5,
+.dark-theme .is-size-7,
+.dark-theme .has-text-grey {
+  color: var(--text-main) !important;
+}
+
+.has-text-grey {
+  color: var(--text-muted) !important;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.stat-box, .pizza-card {
+    border-radius: 35px !important;
+}
+
+.stat-title {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+.footer {
+  background: var(--nav-bg) !important;
+  border-top: 1px solid var(--glass-border);
+  padding: 5rem 1.5rem;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle {
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 18px;
+  background: var(--accent-pastel) !important;
+  border: 1px solid var(--glass-border) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(15deg);
+  border-color: var(--neon-cyan) !important;
+}
+
+.tabs.is-toggle a {
+  background: var(--card-bg) !important;
+  border-color: var(--glass-border) !important;
+  color: var(--text-muted) !important;
+  border-radius: 20px !important;
+  transition: all 0.3s ease;
+}
+
+.tabs.is-toggle li.is-active a {
+  background-color: var(--neon-cyan) !important;
+  border-color: var(--neon-cyan) !important;
+  color: white !important;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-pastel);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+}
