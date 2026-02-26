@@ -1,0 +1,36 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Angular App
+        run: npm run build -- --base-href /
+
+      - name: Add CNAME file
+        run: echo "skypizza.itkamianets.com" > dist/skypizza-app/browser/CNAME || echo "skypizza.itkamianets.com" > dist/skypizza-app/CNAME
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/skypizza-app/browser # Для Angular 17+ шлях зазвичай такий
+          branch: gh-pages
+          clean: true
