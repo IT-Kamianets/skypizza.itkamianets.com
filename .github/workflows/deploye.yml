@@ -28,7 +28,7 @@ jobs:
               run: npm run build
 
             - name: Copy CNAME file
-              run: cp CNAME dist/skypizza.itkamianets.com/browser/
+              run: cp CNAME dist/skypizza-app/browser/
 
             - name: Set up SSH
               env:
@@ -45,7 +45,7 @@ jobs:
               run: |
                   git config --global user.name "github-actions[bot]"
                   git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                  cd dist/skypizza.itkamianets.com/browser
+                  cd dist/skypizza-app/browser
                   git init  # Initialize a new git repository
                   git add --all .  # Add all changes
                   git commit -m "Deploy to GitHub Pages"
