@@ -41,6 +41,23 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  white-space: nowrap; /* Prevents splitting on mobile */
+}
+
+@media screen and (max-width: 768px) {
+  .sky-hero h1.title {
+    font-size: 3.5rem !important; /* Smaller font for mobile to fit one line */
+    letter-spacing: -1px !important;
+  }
+  
+  .sky-hero h2.subtitle {
+    font-size: 1.5rem !important;
+  }
+
+  .subtitle-line {
+    display: block; /* Forces each part of subtitle to a new line */
+    margin-bottom: 0.5rem;
+  }
 }
 
 .pizza-card {
